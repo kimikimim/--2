@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>학업 가속도 - 통합 앱</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2a4bd9",
+              "surface": "#f9f5ff",
+              "on-surface": "#2c2a51",
+              "on-surface-variant": "#5a5781",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f3eeff",
+              "surface-container-high": "#e3dfff",
+              "surface-container-highest": "#ddd9ff",
+              "primary-container": "#879aff",
+              "on-primary": "#f2f1ff",
+              "secondary": "#00647c",
+              "secondary-container": "#82deff",
+              "on-secondary-container": "#004e62",
+              "tertiary": "#b4005d",
+              "tertiary-container": "#ff8eb1",
+              "on-tertiary-container": "#650031",
+              "error": "#b41340"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans", "sans-serif"],
+              "body": ["Manrope", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom) + 6rem); }
+        .pt-safe { padding-top: calc(env(safe-area-inset-top) + 5rem); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .page { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 py-4 shadow-sm">
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary text-2xl">rocket_launch</span>
+        <h1 class="font-headline text-xl font-extrabold tracking-tight text-primary">학업 가속도</h1>
+    </div>
+    <div class="flex items-center gap-3">
+        <button class="material-symbols-outlined text-on-surface-variant p-1">notifications</button>
+        <div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-white shadow-sm">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTgy88enKwinruQcQXnuFAc3nehAIL3OjrokWvsSdPNtFCKKebVIp0TiiIU_qy_cvFYvyoXwh15VUUfc1_Zsjg5EaO7apFdgBHnTZIkaI3wRmJHUJBrJJdY-haIRycoDMJF6SMmSflFPClUY4sAigZ3YscQYbP_pGGNh_cdYQWdFh2CP5OllbunwvFswAdJsjxSQGXr57OcLH1iO1MZhuBc29r8db-YNP0-uMnEIPpTyTaIjz-viZpE1XMSNG7n3XfGI1rDbjuG8" class="w-full h-full object-cover">
+        </div>
+    </div>
+</header>
+
+<main id="page-home" class="page active pt-safe px-5 max-w-md mx-auto space-y-8 pb-safe">
+    <section class="space-y-1">
+        <p class="text-on-surface-variant font-semibold text-sm opacity-80">2024년 5월 23일 목요일</p>
+        <h2 class="font-headline text-3xl font-extrabold tracking-tight">안녕하세요, 민지님! 👋</h2>
+    </section>
+
+    <div class="grid grid-cols-2 gap-3">
+        <div class="col-span-2 bg-surface-container-lowest rounded-3xl p-5 shadow-sm space-y-4 border border-indigo-50/50">
+            <div class="flex justify-between items-center">
+                <h3 class="font-headline font-bold text-lg">오늘의 성취도</h3>
+                <span class="text-primary font-black text-xl">72%</span>
+            </div>
+            <div class="relative w-full h-3 bg-surface-container-low rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 72%;"></div>
+            </div>
+            <div class="flex justify-between text-xs font-bold text-on-surface-variant/70"><span>5개 완료</span><span>2개 남음</span></div>
+        </div>
+        <div class="col-span-1 bg-primary rounded-3xl p-5 text-on-primary shadow-lg flex flex-col justify-between aspect-square">
+            <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">timer</span>
+            <div><p class="text-xs font-medium opacity-80">집중 시간</p><p class="text-xl font-black">4h 12m</p></div>
+        </div>
+        <div class="col-span-1 bg-surface-container-high rounded-3xl p-5 flex flex-col justify-between aspect-square">
+            <span class="material-symbols-outlined text-3xl text-primary">auto_awesome</span>
+            <div><p class="text-xs font-bold text-on-surface-variant">AI 분석</p><p class="text-sm font-extrabold text-primary">최고의 효율!</p></div>
+        </div>
+    </div>
+
+    <section class="space-y-4">
+        <div class="flex justify-between items-center"><h3 class="font-headline font-extrabold text-xl">오늘의 수업</h3><button class="text-primary font-bold text-xs">전체보기</button></div>
+        <div class="bg-surface-container-lowest rounded-2xl p-4 flex items-center gap-4 border border-indigo-50/50 active:scale-[0.98] transition-transform">
+            <div class="bg-indigo-100 text-primary w-12 h-12 rounded-xl flex flex-col items-center justify-center font-black">
+                <span class="text-[10px]">10:00</span><span class="text-sm uppercase">AM</span>
+            </div>
+            <div class="flex-1"><h4 class="font-bold text-md">경제학 개론</h4><p class="text-xs text-on-surface-variant">경영관 302호</p></div>
+            <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+        </div>
+    </section>
+
+    <section class="bg-indigo-600 rounded-3xl p-6 text-white overflow-hidden relative shadow-xl shadow-indigo-200">
+        <div class="relative z-10 space-y-3">
+            <h3 class="font-headline font-bold text-lg">실시간 스터디</h3>
+            <p class="text-indigo-100 text-xs leading-relaxed max-w-[150px]">현재 12명의 학우가 도서관에 있습니다.</p>
+            <button class="bg-white text-indigo-700 px-5 py-2.5 rounded-full font-black text-xs">참여하기</button>
+        </div>
+        <span class="material-symbols-outlined absolute -right-2 -bottom-2 text-[100px] opacity-10">groups</span>
+    </section>
+</main>
+
+<main id="page-calendar" class="page pt-safe px-5 max-w-md mx-auto space-y-6 pb-safe">
+    <div class="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-indigo-50">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="font-headline text-2xl font-extrabold">2024년 5월</h2>
+            <div class="flex gap-2">
+                <button class="p-2 rounded-xl bg-surface-container-low transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+                <button class="p-2 rounded-xl bg-surface-container-low transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+        </div>
+        <div class="grid grid-cols-7 gap-y-4 text-center text-xs">
+            <div class="text-slate-400 font-bold">S</div><div class="text-slate-400 font-bold">M</div><div class="text-slate-400 font-bold">T</div><div class="text-slate-400 font-bold">W</div><div class="text-slate-400 font-bold">T</div><div class="text-slate-400 font-bold">F</div><div class="text-slate-400 font-bold">S</div>
+            <div class="py-2 text-slate-300">12</div><div class="py-2 text-slate-300">13</div><div class="py-2 text-slate-300">14</div><div class="py-2 text-slate-300">15</div><div class="py-2 text-slate-300">16</div><div class="py-2 text-slate-300">17</div><div class="py-2 text-slate-300">18</div>
+            <div class="py-2 font-bold">19</div><div class="py-2 font-bold">20</div><div class="py-2 font-bold">21</div>
+            <div class="py-2 font-bold bg-primary text-white rounded-xl">22</div>
+            <div class="py-2 font-bold">23</div><div class="py-2 font-bold">24</div><div class="py-2 font-bold">25</div>
+        </div>
+    </div>
+    <div class="space-y-4">
+        <h3 class="font-bold text-lg">오늘의 일정</h3>
+        <div class="bg-secondary-container/30 p-4 rounded-2xl flex justify-between items-center border-l-4 border-secondary">
+            <div><h4 class="font-bold">데이터 구조</h4><p class="text-xs text-secondary">09:00 - 10:30 | 공학관</p></div>
+            <span class="material-symbols-outlined text-secondary">menu_book</span>
+        </div>
+    </div>
+</main>
+
+<main id="page-timetable" class="page pt-safe px-2 max-w-md mx-auto space-y-6 pb-safe">
+    <div class="px-3 flex justify-between items-end">
+        <div><p class="text-xs font-bold text-primary">2024-1학기</p><h2 class="text-2xl font-headline font-black">수강 시간표</h2></div>
+        <button class="bg-primary text-white p-2 rounded-xl shadow-lg"><span class="material-symbols-outlined">add</span></button>
+    </div>
+    <div class="bg-surface-container-lowest rounded-3xl shadow-sm overflow-hidden border border-indigo-50">
+        <div class="overflow-x-auto no-scrollbar">
+            <div class="min-w-[400px] grid grid-cols-[50px_repeat(5,1fr)] text-center">
+                <div class="h-12 bg-surface-container-low"></div>
+                <div class="h-12 flex flex-col justify-center bg-surface-container-low border-l border-white/50"><span class="text-[10px] font-bold opacity-50">MON</span><span class="font-bold">월</span></div>
+                <div class="h-12 flex flex-col justify-center bg-surface-container-low border-l border-white/50"><span class="text-[10px] font-bold opacity-50">TUE</span><span class="font-bold">화</span></div>
+                <div class="h-12 flex flex-col justify-center bg-surface-container-low border-l border-white/50"><span class="text-[10px] font-bold opacity-50">WED</span><span class="font-bold">수</span></div>
+                <div class="h-12 flex flex-col justify-center bg-surface-container-low border-l border-white/50"><span class="text-[10px] font-bold opacity-50">THU</span><span class="font-bold">목</span></div>
+                <div class="h-12 flex flex-col justify-center bg-surface-container-low border-l border-white/50"><span class="text-[10px] font-bold opacity-50">FRI</span><span class="font-bold">금</span></div>
+                
+                <div class="grid grid-rows-5 text-[10px] font-bold text-on-surface-variant/60 py-2">
+                    <div class="h-16">09:00</div><div class="h-16">10:00</div><div class="h-16">11:00</div><div class="h-16">12:00</div><div class="h-16">13:00</div>
+                </div>
+                <div class="relative border-l border-indigo-50">
+                    <div class="absolute top-2 left-1 right-1 h-28 bg-primary-container/30 border-l-4 border-primary rounded-lg p-1 text-left">
+                        <p class="text-[10px] font-black leading-tight">컴공입문</p>
+                        <p class="text-[8px] opacity-70">302호</p>
+                    </div>
+                </div>
+                <div class="border-l border-indigo-50"></div><div class="border-l border-indigo-50"></div><div class="border-l border-indigo-50"></div><div class="border-l border-indigo-50"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<main id="page-person" class="page pt-safe px-5 max-w-md mx-auto space-y-8 pb-safe">
+    <section class="flex flex-col items-center text-center space-y-4">
+        <div class="w-24 h-24 rounded-full border-4 border-white shadow-xl overflow-hidden bg-primary-container">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOTgy88enKwinruQcQXnuFAc3nehAIL3OjrokWvsSdPNtFCKKebVIp0TiiIU_qy_cvFYvyoXwh15VUUfc1_Zsjg5EaO7apFdgBHnTZIkaI3wRmJHUJBrJJdY-haIRycoDMJF6SMmSflFPClUY4sAigZ3YscQYbP_pGGNh_cdYQWdFh2CP5OllbunwvFswAdJsjxSQGXr57OcLH1iO1MZhuBc29r8db-YNP0-uMnEIPpTyTaIjz-viZpE1XMSNG7n3XfGI1rDbjuG8" class="w-full h-full object-cover">
+        </div>
+        <div>
+            <h2 class="text-2xl font-black">김민지 학우님</h2>
+            <p class="text-on-surface-variant font-medium">컴퓨터공학과 23학번</p>
+        </div>
+    </section>
+    <div class="grid grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-50">
+            <p class="text-xs font-bold text-slate-400 mb-1">평균 학점</p>
+            <p class="text-xl font-black text-primary">4.2 / 4.5</p>
+        </div>
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-50">
+            <p class="text-xs font-bold text-slate-400 mb-1">완료 과제</p>
+            <p class="text-xl font-black text-secondary">128개</p>
+        </div>
+    </div>
+    <ul class="space-y-2">
+        <li class="flex items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-indigo-50">
+            <div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">settings</span><span class="font-bold">설정</span></div>
+            <span class="material-symbols-outlined text-slate-300">chevron_right</span>
+        </li>
+    </ul>
+</main>
+
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-[90%] max-w-xs bg-on-surface/95 backdrop-blur-lg px-6 py-3 rounded-full flex items-center justify-between shadow-2xl z-40">
+    <div class="flex items-center gap-3">
+        <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+        <span class="text-white text-sm font-bold">집중 모드 시작</span>
+    </div>
+    <button class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center active:scale-90 transition-transform">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+    </button>
+</div>
+
+<nav class="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-md flex justify-around items-center px-2 pt-3 pb-safe border-t border-slate-100 z-50">
+    <button onclick="showPage('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 text-primary px-4 py-2">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+        <span class="text-[10px] font-bold">홈</span>
+    </button>
+    <button onclick="showPage('calendar')" id="nav-calendar" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-4 py-2">
+        <span class="material-symbols-outlined">calendar_month</span>
+        <span class="text-[10px] font-bold">달력</span>
+    </button>
+    <button onclick="showPage('timetable')" id="nav-timetable" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-4 py-2">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span class="text-[10px] font-bold">시간표</span>
+    </button>
+    <button onclick="showPage('person')" id="nav-person" class="nav-btn flex flex-col items-center gap-1 text-slate-400 px-4 py-2">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-[10px] font-bold">마이</span>
+    </button>
+</nav>
+
+<script>
+    function showPage(pageId) {
+        // 모든 페이지 숨기기
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        // 선택한 페이지 보여주기
+        document.getElementById('page-' + pageId).classList.add('active');
+        
+        // 모든 버튼 스타일 초기화
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-slate-400');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            icon.style.fontVariationSettings = "'FILL' 0";
+        });
+        
+        // 활성화된 버튼 스타일 적용
+        const activeBtn = document.getElementById('nav-' + pageId);
+        activeBtn.classList.add('text-primary');
+        activeBtn.classList.remove('text-slate-400');
+        activeBtn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+
+        // 페이지 전환 시 상단으로 스크롤
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
