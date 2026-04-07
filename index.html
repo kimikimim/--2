@@ -8,42 +8,53 @@
         body {
             font-family: 'Malgun Gothic', 'Noto Sans KR', sans-serif;
             margin: 0;
-            background-color: #f9f9f9;
+            background-color: #f0f2f5;
+            color: #333;
+            scroll-snap-type: y mandatory; /* 스크롤 스냅 설정 */
+            overflow-y: scroll;
         }
 
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
+            width: 100%;
+            height: 100vh; /* 화면 높이에 맞춤 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start; /* 스크롤 스냅 지점 */
         }
 
-        /* 각 페르소나 섹션 스타일 */
+        /* 각 페르소나 카드 스타일 */
         .persona-card {
             background-color: white;
             border-radius: 20px;
+            width: 90%;
+            max-width: 1000px;
+            height: 90vh; /* 카드 높이 */
             padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* 내용 넘침 방지 */
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 3px solid #007bff; /* 포인트 컬러 */
             padding-bottom: 15px;
             margin-bottom: 25px;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            color: #007bff;
         }
 
         .header h2 {
             margin: 0;
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #555;
             font-weight: normal;
         }
@@ -52,17 +63,35 @@
         .content {
             display: flex;
             gap: 30px;
+            flex: 1; /* 남은 높이 차지 */
+            overflow-y: auto; /* 내용 많을 때 내부 스크롤 */
+            padding-right: 10px; /* 스크롤바 공간 */
         }
 
         /* 왼쪽 이미지 및 기본 정보 */
         .content-left {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .profile-img {
             width: 100%;
-            border-radius: 15px;
-            margin-bottom: 20px;
+            max-width: 300px;
+            aspect-ratio: 1 / 1; /* 정사각형 비율 */
+            border-radius: 50%; /* 원형 이미지 */
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+        }
+
+        .basic-info {
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .basic-info ul {
@@ -72,13 +101,19 @@
         }
 
         .basic-info li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
+            font-size: 0.95em;
+        }
+
+        .basic-info li:last-child {
+            margin-bottom: 0;
         }
 
         .info-label {
             font-weight: bold;
-            width: 70px;
+            width: 80px;
+            color: #555;
             display: inline-block;
         }
 
@@ -89,20 +124,33 @@
 
         .section-title {
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.15em;
             margin-top: 0;
             margin-bottom: 15px;
-            color: #333;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 18px;
+            background-color: #007bff;
+            margin-right: 10px;
+            border-radius: 3px;
         }
 
         .story-text {
             color: #555;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 25px;
+            font-size: 0.95em;
         }
 
         .tax-situation {
-            background-color: #f5f5f5;
+            background-color: #e9ecef;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 25px;
@@ -119,33 +167,61 @@
         .tax-situation-item span.label {
             font-weight: bold;
             color: #333;
+            font-size: 0.95em;
         }
 
         .tax-situation-item p {
             margin: 5px 0 0;
             color: #555;
+            line-height: 1.6;
+            font-size: 0.9em;
         }
 
         /* 앱에 대한 기대 */
         .app-expectations {
             color: #555;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 0.95em;
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
         }
 
         /* 프린트 스타일 - 한 장에 하나씩 */
         @media print {
             body {
                 background-color: white;
+                scroll-snap-type: none;
+                overflow-y: visible;
             }
             .container {
-                width: 100%;
+                height: auto;
+                page-break-after: always;
+                display: block;
                 margin: 0;
+                padding: 0;
             }
             .persona-card {
-                page-break-after: always;
                 box-shadow: none;
                 border: 1px solid #ccc;
-                margin-bottom: 0;
+                width: 100%;
+                height: auto;
+                margin: 0;
+                padding: 20px;
+                overflow: visible;
+            }
+            .content {
+                overflow-y: visible;
+                display: block;
+            }
+            .content-left, .content-right {
+                width: 100%;
+                display: block;
+            }
+            .profile-img {
+                max-width: 150px;
+                margin: 0 auto 20px;
             }
         }
     </style>
@@ -153,7 +229,6 @@
 <body>
 
     <div class="container">
-
         <div class="persona-card">
             <div class="header">
                 <h1>페르소나 1: 이순자 (62세, 여)</h1>
@@ -161,19 +236,19 @@
             </div>
             <div class="content">
                 <div class="content-left">
-                    <img src="path/to/soonja_profile.jpg" alt="이순자 사장님 프로필" class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1581579438947-01201460591e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8MTF8fGtvcmVhbi%20old%20woman%20market%20portrait%7Cenv3fDB8fHx8MTY3ODk0OTQ4Ng&ixlib=rb-4.0.3&q=80&w=400" alt="이순자 사장님 프로필" class="profile-img">
                     <div class="basic-info">
                         <ul>
                             <li><span class="info-label">나이</span> 62세</li>
                             <li><span class="info-label">거주지</span> 부산 중구 부평동</li>
                             <li><span class="info-label">학력</span> 초등학교 졸업</li>
-                            <li><span class="info-label">가족</span> 사별 후 홀로</li>
+                            <li><span class="info-label">가족</span> 사별 후 홀로 지냄</li>
                         </ul>
                     </div>
                 </div>
                 <div class="content-right">
                     <p class="section-title">배경 스토리</p>
-                    <p class="story-text">부산 자갈치시장 골목에서 30년 넘게 작은 반찬 가게('순자네 반찬')를 운영하고 있습니다. 손맛이 좋아 단골은 많지만, 하루 벌어 하루 먹고사는 형편입니다. 스마트폰은 유튜브 시청, 카카오톡, 전화 걸기 외에는 거의 사용하지 못합니다.</p>
+                    <p class="story-text">부산 자갈치시장 골목에서 30년 넘게 작은 반찬 가게('순자네 반찬')를 운영하고 있습니다. 손맛이 좋아 단골은 많지만, 하루 벌어 하루 먹고사는 형편입니다. 스마트폰은 유튜브 시청, 카카오톡, 전화 걸기 외에는 거의 사용하지 못합니다. 복잡한 앱은 질색입니다.</p>
 
                     <p class="section-title">세무 관련 상황</p>
                     <div class="tax-situation">
@@ -196,7 +271,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="container">
         <div class="persona-card">
             <div class="header">
                 <h1>페르소나 2: 김민우 (38세, 남)</h1>
@@ -204,19 +281,19 @@
             </div>
             <div class="content">
                 <div class="content-left">
-                    <img src="path/to/minwoo_profile.jpg" alt="김민우 대표 프로필" class="profile-img">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MXxzZWFyY2h8NHx8a29yZWFuJTIwbWFbiUyMGluJTIwYnVzaW5lc3MlMjBzdWl0fGVufDB8fHx8MTY3ODk0OTUwNw&ixlib=rb-4.0.3&q=80&w=400" alt="김민우 대표 프로필" class="profile-img">
                     <div class="basic-info">
                         <ul>
                             <li><span class="info-label">나이</span> 38세</li>
                             <li><span class="info-label">거주지</span> 서울 강남구 역삼동</li>
                             <li><span class="info-label">학력</span> 서울대 경제학, US CPA</li>
-                            <li><span class="info-label">가족</span> 미혼, 워커홀릭</li>
+                            <li><span class="info-label">가족</span> 미혼, 열정적인 워커홀릭</li>
                         </ul>
                     </div>
                 </div>
                 <div class="content-right">
                     <p class="section-title">배경 스토리</p>
-                    <p class="story-text">대기업 재무팀 근무 후 IT 기반 물류 스타트업을 창업하여 3년 차 운영 중입니다. 투자 유치를 준비 중이라 재무제표 관리에 매우 민감하며, 성격이 꼼꼼하고 완벽주의 성향이 있습니다.</p>
+                    <p class="story-text">대기업 재무팀 근무 후 IT 기반 물류 스타트업을 창업하여 3년 차 운영 중입니다. 투자 유치를 준비 중이라 재무제표 관리에 매우 민감하며, 성격이 꼼꼼하고 완벽주의 성향이 있습니다. 자신의 사업 데이터를 완벽히 통제하길 원합니다.</p>
 
                     <p class="section-title">세무 관련 상황</p>
                     <div class="tax-situation">
@@ -239,8 +316,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 </body>
 </html>
+
